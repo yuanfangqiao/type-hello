@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+    <link rel='icon' href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎛</text></svg>'>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width'>
+    <title>圆方巧</title>
+</head>
+<style type='text/css'>
+    body {
+        background-color: #bc2e26
+    }
+    .yfq-text-main {
+        color: #fdd069;
+    }
+    
+    .yfq-text-sub {
+        color: #f2d486;
+    }
+    
+    #fyq::after {
+        content: '|';
+        color: #FF7F32;
+        animation: blink 1s infinite;
+    }
+    
+    @keyframes blink {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+
+<body>
+    <div>
+        <h1 align='center'>
+           <span class='yfq-text-main' id='fyq'></span> 
+        </h1>
+        <h4 class='yfq-text-sub' align='center'>对未来有所期待，Looking forward to the future!</h4>
+    </div>
+
+</body>
+<script type='text/javascript'>
+    var texts = ['你好，圆方巧！', '新年快乐！','']
+    var text = texts[0]
+    var arrI = 0
+    var delay = 100
+    var i = 0
+    var back = false
+
+    function scrollit() {
+        let sliceI = (back ? i-- : i++)
+        fyq.innerText = text.slice(0, sliceI)
+        if ((i < 0 && back)) {
+            arrI = (arrI + 1 >= texts.length ? 0 : arrI + 1)
+            text = texts[arrI];
+            i = 0
+            back = false
+            setTimeout('scrollit()', delay * 30)
+        } else if (i > text.length && !back) {
+            back = true
+            setTimeout('scrollit()', delay * 30)
+        } else {
+            setTimeout('scrollit()', delay * (Math.floor(Math.random() * 3) + 1))
+        }
+    }
+    scrollit()
+</script>
