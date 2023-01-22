@@ -40,5 +40,5 @@ ps -ef | grep type_hello
 
 杀掉服务进程
 ```shell
-ps -ef | grep type_hello
+kill [pid]
 ```
